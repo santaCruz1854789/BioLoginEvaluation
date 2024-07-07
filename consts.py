@@ -1,0 +1,14 @@
+# Number of TOTAL IDENTITIES
+TOTAL_IDENTITIES = 840
+
+# Number of ENROLLED IDENTITIES
+ENROLLED_IDENTITIES = 700
+
+# Number of IMPOSTORS
+IMPOSTORS_IDENTITES = TOTAL_IDENTITIES - ENROLLED_IDENTITIES
+
+# Number of templates for each enrolled entity
+ENROLLED_TEMPLATES = 3
+
+# Number of probes for each probe
+PROBES_ATTEMPTS = 3
