@@ -33,3 +33,10 @@ Run these scripts in the following order to generate the evaluation dataset:
 2) evaluation_database_generator.py
 
 The evaluation dataset is going to be located inside the freshly created *Eval_Dataset* directory.
+
+# Computing the graphs
+After generating the evaluation dataset, set up the necessary parameters in the constants.py file and then run
+```bash
+python3 metrics_computations.py
+```
+The *det*, *roc* and *eer* graphs will be located in the graph folder.
