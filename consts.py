@@ -1,3 +1,6 @@
+# Rounding number
+ROUNDING_NUMBER = 7
+
 # Number of TOTAL IDENTITIES
 TOTAL_IDENTITIES = 840
 
@@ -34,4 +37,6 @@ THRESHOLD_STEP = 0.01
 
 # Name of the evaluation metric
 EVALUATION_METRICS_NAME = "evaluation_metrics.json"
+
+
 

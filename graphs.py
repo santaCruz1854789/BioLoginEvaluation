@@ -3,7 +3,7 @@ import json
 import os
 
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
+from matplotlib.ticker import FuncFormatter
 
 
 GRAPHS_PATH = "graphs"
@@ -34,13 +34,11 @@ def roc(metrics):
         os.mkdir(GRAPHS_PATH)
     path = os.path.join(GRAPHS_PATH, ROC_GRAPH_NAME)
     plt.savefig(path)
-    plt.show()
 
 
 def det(metrics):
     DET_GRAPH_NAME = "det.png"
-    GRAPHS_PATH = "graphs"
-
+    
     far_list = []
     frr_list = []
 
@@ -54,16 +52,23 @@ def det(metrics):
     plt.xscale('log')
     plt.yscale('log')
 
+
+    plt.gca().xaxis.set_major_formatter(FuncFormatter(lambda x, _: '{:g}'.format(x)))
+    plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda y, _: '{:g}'.format(y)))
+    
     plt.xlabel('False Acceptance Rate')
     plt.ylabel('False Rejection Rate')
     plt.title('DET Curve')
+
+    # Adjust layout to prevent label cropping
+    plt.tight_layout()
 
     if not os.path.exists(GRAPHS_PATH):
         os.mkdir(GRAPHS_PATH)
     path = os.path.join(GRAPHS_PATH, DET_GRAPH_NAME)
     
     plt.savefig(path)
-    plt.show()
+
     
 
 def eer(metrics):
@@ -76,7 +81,7 @@ def eer(metrics):
         far_list.append(metrics[threshold]["FAR"])
         frr_list.append(metrics[threshold]["FRR"])
 
-
+    
     plt.figure()
     plt.plot(frr_list, label="FRR")
     plt.plot(far_list, label="FAR")
@@ -89,7 +94,6 @@ def eer(metrics):
     path = os.path.join(GRAPHS_PATH, EER_GRAPH_NAME)
     
     plt.savefig(path)
-    plt.show()
 
 def generate_graphs():
     metrics = load_evaluation_metrics()

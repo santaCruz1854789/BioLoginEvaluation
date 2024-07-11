@@ -65,7 +65,7 @@ def all_against_all(matrix, gallery_names, genuine_names, impostor_names):
     p_g = len(genuine_names)
     p_n = len(impostor_names)
 
-    thresholds = [round(threshold, 3) for threshold in np.arange(consts.MIN_THRESHOLD, consts.MAX_THRESHOLD, consts.THRESHOLD_STEP)] 
+    thresholds = [round(threshold, consts.ROUNDING_NUMBER) for threshold in np.arange(consts.MIN_THRESHOLD, consts.MAX_THRESHOLD, consts.THRESHOLD_STEP)] 
 
     for threshold in thresholds:
         metrics[threshold] = {
@@ -95,9 +95,9 @@ def all_against_all(matrix, gallery_names, genuine_names, impostor_names):
                 else:
                     metrics[threshold]["GR"] += 1
 
-        metrics[threshold]["DIR"] = round(metrics[threshold]["DI"]/p_g, 2)
-        metrics[threshold]["FRR"] = round(1 - metrics[threshold]["DIR"], 2)
-        metrics[threshold]["FAR"] = round(metrics[threshold]["FA"]/p_n, 2)
+        metrics[threshold]["DIR"] = round(metrics[threshold]["DI"]/p_g, consts.ROUNDING_NUMBER)
+        metrics[threshold]["FRR"] = round(1 - metrics[threshold]["DIR"], consts.ROUNDING_NUMBER)
+        metrics[threshold]["FAR"] = round(metrics[threshold]["FA"]/p_n, consts.ROUNDING_NUMBER)
         metrics[threshold]["ERR"] = metrics[threshold]["FAR"] == metrics[threshold]["FRR"]
 
         #print(f"\t{threshold} -> {metrics[threshold]}")        

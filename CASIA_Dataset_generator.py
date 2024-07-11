@@ -48,6 +48,10 @@ while cur_id < num_id:
             # If the face is not recognized it's a bad photo, discard it!
             if len(img_encodings) < 1:
                 os.remove(img_name)
+            
+            # If there are multiple faces in the image, bad photo! Discard it!
+            if len(img_encodings) > 1:
+                os.remove(img_name)
         else: break
 
 # Removes the directories that do not have at least 6 faces
@@ -59,6 +63,6 @@ for dir in os.listdir(dataset):
         shutil.rmtree(fullpath)
         counter += 1
 
-print(f"{counter} identities have been removed because they didn't have enough images")
+print(f"{counter} identities have been removed because they didn't have enough photos")
         
         
