@@ -37,6 +37,3 @@ THRESHOLD_STEP = 0.01
 
 # Name of the evaluation metric
 EVALUATION_METRICS_NAME = "evaluation_metrics.json"
-
-
-

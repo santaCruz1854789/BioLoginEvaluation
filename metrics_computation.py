@@ -65,7 +65,9 @@ def all_against_all(matrix, gallery_names, genuine_names, impostor_names):
     p_g = len(genuine_names)
     p_n = len(impostor_names)
 
+
     thresholds = [round(threshold, consts.ROUNDING_NUMBER) for threshold in np.arange(consts.MIN_THRESHOLD, consts.MAX_THRESHOLD, consts.THRESHOLD_STEP)] 
+
 
     for threshold in thresholds:
         metrics[threshold] = {
