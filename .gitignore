@@ -1,0 +1,7 @@
+CASIA_WebFace_dataset/
+Datasets/
+Eval_Dataset/
+distance_matrix.csv
+myenv/
+__pycache__/
+utils/
